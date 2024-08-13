@@ -116,6 +116,7 @@ nav .sherch div img{
     box-sizing: border-box;
     overflow: hidden;
     opacity: 0;
+    
 }
 .inputActiv{
     width: 100%!important;
@@ -142,12 +143,14 @@ nav .sherch div img{
 .inputrecherche .btn:hover{
     background-color: rgb(255, 0, 72);
 }
-
+.inputrecherche .btn .image{
+    display: none;
+}
 /* le corp de la page */
 .container{
     width:100%;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4.5fr;
 }
 .container .Menu{
     position:sticky;
@@ -158,7 +161,7 @@ nav .sherch div img{
     flex-direction: column;
     /* margin-right: 10px; */
     z-index: 11;
-    border: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .container .Menu .btnBG{
@@ -218,7 +221,7 @@ nav .sherch div img{
 .Menu .categories .item:hover{
     transform: translateX(20px);
     border-radius: 10px;
-    box-shadow: -10px 6px 15px 3px rgba(0, 0, 0, 0.663);
+    box-shadow: -10px 6px 15px 3px rgba(255, 255, 255, 0.088);
     z-index: 20;
     border: 1px solid white;
 }
@@ -264,16 +267,40 @@ nav .sherch div img{
 
 .container .contenu .card .close{
     height: 30px;
-    width: 30px;
-    background-color: red;
+    width: 40px;
+    /* background-color: red; */
+    /* backdrop-filter: blur(10px); */
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px;
     display: none;
+    /* position: relative; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    transition: .2s;
+}
+.container .contenu .card .close:active{
+    transform: scale(1.2);
+}
+.card .close span{
+    display: block;
+    background-color: rgb(255, 0, 111);
+    width: 70%;
+    height: 10%;
+    position: absolute;
+    border-radius: 10px;
+}
+.card .close span:nth-child(1){
+transform: rotate(40deg);
+}
+.card .close span:nth-child(2){
+    transform: rotate(-40deg);
 }
 .closeVisible{
-    display: block!important;
+    display: flex!important;
 } 
 /* footer */
 footer{
@@ -333,6 +360,10 @@ footer .signature p{
     }
     .inputrecherche .btn p{
         display: none;
+    }
+    .inputrecherche .btn .image{
+        display: block;
+        height: 25px;
     }
     nav ul{
         gap: 10px;

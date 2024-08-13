@@ -89,25 +89,40 @@ console.log(contenuContent)
                     contenuContent.innerHTML="" 
                     texte.textContent=genres[i].name
                     // fonction pour pouvoir afficher plusieur pages a la fois
-                    async function pages(page){
-                        const resultat=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=${page}`)
+                    async function pages(){
+                        const resultat=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=1`)
                         const donnee=await resultat.json()
-                            for(let i=0;i<donnee.results.length; i++){
-                                let urlImage=donnee.results[i].backdrop_path
+                        const resultat2=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=2`)
+                        const donnee2=await resultat2.json()
+                        const resultat3=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=3`)
+                        const donnee3=await resultat3.json()
+                        const resultat4=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=4`)
+                        const donnee4=await resultat4.json()
+                        const resultat5=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=5`)
+                        const donnee5=await resultat5.json()
+                        const resultat6=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=6`)
+                        const donnee6=await resultat6.json()
+                        const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results]
+
+                            for(let i=0;i<Alldonnee.length; i++){
+                                let urlImage=Alldonnee[i].backdrop_path
                                 // console.log(donnee)
                                 const div=document.createElement("div")
                                     div.classList.add("card")
                                     div.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${urlImage})`
                                 const close=document.createElement("div")
                                     close.classList.add("close")
+                                const span1=document.createElement("span")    
+                                const span2=document.createElement("span") 
+                                    close.appendChild(span1) 
+                                    close.appendChild(span2) 
                                 div.appendChild(close)   
                                 contenuContent.appendChild(div)
                             }
                             affichefilms()
                             close()
                             close2()
-                    }pages(1)
-                    // ; pages(2);pages(3);pages(4);pages(5);pages(6); pages(7);pages(8);
+                    }pages()
                 })
             }
         }affichage()
