@@ -39,19 +39,29 @@ function close(){
         })
 }close()
 
-// apparution et disparution du bouton close 
-function close2(){
-    let close=document.querySelectorAll('.card .close')
+// affichage en fonction de la taille de la div
+function resize(){
     let cards=document.querySelectorAll(".card")
-        cards.forEach((element)=>{
-            element.addEventListener("click",()=>{
+    let close=document.querySelectorAll('.card .close')
+    for(let i=0;i<cards.length;i++){
+        cards[i].addEventListener("click",()=>{
+            const largeur=cards[i].offsetWidth
+            if(largeur>250){
+                // quand la div prend tout l'ecrant
                 close.forEach((element)=>{
-                    element.classList.toggle("closeVisible")
-                    console.log(element)
+                    element.classList.add("closeVisible")
                 })
-            })
+            }
+                // quand la dive est petite 
+            if(largeur<=250){
+                close.forEach((element)=>{
+                    element.classList.remove("closeVisible")
+                })
+            }
         })
-} close2()
+    }
+    console.log(cards)
+} resize()
 
 // gestion du boutton BG
 function btnBG(){
@@ -62,6 +72,8 @@ function btnBG(){
         })
     console.log(Menu)
 }btnBG()
+
+
 
 // fetching de donnee et generation du dome
 let categorieContent=document.querySelector(".Menu .categories")
@@ -121,7 +133,7 @@ console.log(contenuContent)
                             }
                             affichefilms()
                             close()
-                            close2()
+                            resize()
                     }pages()
                 })
             }
