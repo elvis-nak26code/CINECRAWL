@@ -7,7 +7,6 @@ function apparutionBtnRecherche(){
             input.classList.toggle("inputActiv")
             texte.classList.toggle("titreActive")
         })
-console.log(input)
 }apparutionBtnRecherche()
 
 // agrandi la card au click pour mermetre de voir les informations sur les films
@@ -22,14 +21,14 @@ function affichefilms(){
                     active = active === true ? false : true;
             })
         })
-    console.log(cards)
+    // console.log(cards)
 }affichefilms()
 
 // reduit la card quand elle est agrandi
 function close(){
     let close=document.querySelectorAll(".card .close")
     let cards=document.querySelectorAll(".card")
-    console.log(close)
+    // console.log(close)
         close.forEach((element)=>{
                 element.addEventListener("click",()=>{
                     cards.forEach((element)=>{
@@ -60,7 +59,7 @@ function resize(){
             }
         })
     }
-    console.log(cards)
+    // console.log(cards)
 } resize()
 
 // gestion du boutton BG
@@ -70,7 +69,6 @@ function btnBG(){
         btnBG.addEventListener("click",()=>{
             Menu.classList.toggle("MenuVisible")
         })
-    console.log(Menu)
 }btnBG()
 
 
@@ -93,7 +91,7 @@ async function fetchData(){
           // affichage des films
 let contenuContent=document.querySelector(".container .contenu")
 let texte=document.getElementById("titre") 
-console.log(contenuContent)
+// console.log(contenuContent)
         function affichage(){
             const btnsCategories=document.querySelectorAll(".categories .item")
             for(let i=0; i<btnsCategories.length;i++){
@@ -115,25 +113,73 @@ console.log(contenuContent)
                         const resultat6=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genres[i].id}&page=6`)
                         const donnee6=await resultat6.json()
                         const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results]
+                        
 
                             for(let i=0;i<Alldonnee.length; i++){
-                                let urlImage=Alldonnee[i].backdrop_path
-                                // console.log(donnee)
+                                let urlImage=Alldonnee[i].poster_path                                
+                                let titre=Alldonnee[i].original_title
+                                let dateDesortie=Alldonnee[i].release_date.split("-")
+                                let dateActuelle=new Date()
+                                const tsparmoi=2592000000
+                                let timestempActuelEnMoi=dateActuelle.getTime()/tsparmoi
+                                let timestempSortiDuFilme=new Date(`${dateDesortie[0]}-${dateDesortie[1]}`).getTime()/tsparmoi
+                                let differenceDeMoi=timestempActuelEnMoi-timestempSortiDuFilme
+                                            // la card
                                 const div=document.createElement("div")
                                     div.classList.add("card")
-                                    div.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${urlImage})`
+                                            // btn close
                                 const close=document.createElement("div")
                                     close.classList.add("close")
                                 const span1=document.createElement("span")    
-                                const span2=document.createElement("span") 
+                                const span2=document.createElement("span")
                                     close.appendChild(span1) 
                                     close.appendChild(span2) 
-                                div.appendChild(close)   
-                                contenuContent.appendChild(div)
+                                div.appendChild(close)  
+                                            // autre contenu
+                                const divImg=document.createElement("div")   
+                                    divImg.classList.add("imgdiv")
+                                    divImg.style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${urlImage})`
+                                            // indicatif de nouveauter
+                                    if(differenceDeMoi<=7){
+                                        const news=document.createElement("div") 
+                                        news.textContent="NEW" 
+                                        news.classList.add("new")
+                                        divImg.appendChild(news) 
+                                    } 
+                                        div.appendChild(divImg)
+                                          // titre
+                                const divtitr = document.createElement("div") 
+                                    divtitr.classList.add("titre")
+                                const para=document.createElement("p")
+                                    divtitr.appendChild(para)
+                                    para.textContent=titre
+                                    div.appendChild(divtitr)
+                                    contenuContent.appendChild(div)
                             }
                             affichefilms()
                             close()
                             resize()
+
+                            let cards=document.querySelectorAll(".card")
+                            console.log(cards)
+                            for(let i=0;i<cards.length;i++){
+                                cards[i].addEventListener("click",()=>{
+                                    const largeur=cards[i].offsetWidth
+                                    if(largeur>250){
+                                        // quand la div prend tout l'ecrant
+                                        console.log("nous somme sur grand ecrant")
+                                        console.log(Alldonnee)
+                                        
+                                    }
+                                        // quand la dive est petite 
+                                    if(largeur<=250){
+                                            console.log("nous somme sur patit ecrant")
+                                            for(let i=0;i<Alldonnee.length; i++){
+                                                let name=Alldonnee[i].original_title
+                                            }
+                                    }
+                                })
+                            }
                     }pages()
                 })
             }

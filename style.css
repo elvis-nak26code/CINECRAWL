@@ -233,14 +233,14 @@ nav .sherch div img{
 .container .contenu{
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
     padding: 20px;
     justify-content: center;
 }
 .container .contenu .card{
-    height: 320px;
+    height: 420px;
     min-width: 250px;
-    background-color: rgba(255, 255, 255, 0.196);
+    background-color: rgba(0, 0, 0, 0);
     backdrop-filter: blur(10px);
     /* background-image: url(overhead-view-person-s-hand-cutting-brown-paper-with-scissor.jpg); */
     background-repeat: no-repeat;
@@ -248,7 +248,53 @@ nav .sherch div img{
     background-size: cover;
     transition: .3s;
     transform-origin: center;
+    border-radius: 5px 5px 0 0;
+    /* overflow: hidden; */
+}
+.cardHover:hover{
+    transform: rotate(-10deg);
+    transform: scale(1.14);
+    z-index: 10;
+}
+.container .contenu .card .titre{
+    min-height: 10%;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    
+}
+.container .contenu .card .titre P{
+    color: white;
+    font-size: .8rem;
+    text-align: start;
+    font-weight: 800;
+}
+.container .contenu .card .imgdiv{
+    height: 90%;
+    background-color: rgb(13, 0, 255);
     border-radius: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 5px;
+    display: flex;
+    justify-content: end;
+}
+.container .contenu .card .imgdiv .new{
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 43, 103);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    /* border: 3px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    color: white;
+    font-weight: 700;
+    font-family: sans-serif;
 }
 /* .container .contenu .card:hover{
     transform: rotate(5deg);
@@ -382,6 +428,6 @@ footer .signature p{
     }
     .container .contenu .card{
         min-width: 160px;
-        height: 250px;
+        height: 320px;
     }
 }
