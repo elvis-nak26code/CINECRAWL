@@ -9,10 +9,11 @@ body{
 /* avbar */
 nav{
     height: 50px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(4, 0, 52);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white!important;
 }
 nav .logo{
     font-size: 1.6rem;
@@ -36,7 +37,7 @@ nav ul a{
     text-decoration: none;
     font-size: 1rem;
     font-family: sans-serif;
-    color: black;
+    color: rgb(255, 255, 255);
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -46,7 +47,7 @@ nav ul a::after{
     content: "";
     height: 2.5px;
     width: 10%;
-    background-color: rgb(3, 0, 59);
+    background-color: rgb(255, 43, 103);
     border-radius: 1px;
     opacity: 0;
     transition: .6s;
@@ -64,7 +65,7 @@ nav .sherch{
     align-items: center;
 }
 nav .sherch div{
-    background-color: rgb(3, 0, 59);
+    background-color:  rgba(255, 43, 103, 0.76);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +74,7 @@ nav .sherch div{
     transition: .5s;
 }
 nav .sherch div:hover{
-    background-color: rgb(7, 1, 129);
+    background-color: rgb(255, 43, 103);
 }
 nav .sherch div:active{
     transform: scale(1.2);
@@ -88,12 +89,14 @@ nav .sherch div img{
     background-color: rgb(2, 0, 33);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     overflow: hidden;
     position: sticky;
     top: 0;
     z-index: 10;
+    box-sizing: border-box;
+    padding-right: 30px;
 }
 .recherche #titre{
     color: rgb(255, 255, 255);
@@ -107,7 +110,7 @@ nav .sherch div img{
 }
 .recherche .inputrecherche{
     height: 70%;
-    width: 100px;
+    width: 80%!important;
     background-color: rgba(255, 255, 255, 0.356);
     transition: .5s;
     border-radius: 10px;
@@ -116,7 +119,6 @@ nav .sherch div img{
     box-sizing: border-box;
     overflow: hidden;
     opacity: 0;
-    
 }
 .inputActiv{
     width: 100%!important;
@@ -155,21 +157,21 @@ nav .sherch div img{
 .container .Menu{
     position:sticky;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.211);
+    /* background-color: rgba(255, 0, 0, 0.574); */
     height: 100vh;
     display: flex;
     flex-direction: column;
     /* margin-right: 10px; */
     z-index: 11;
-    border-right: 1px solid white;
+    /* border-right: 1px solid white; */
 }
 
 .container .Menu .btnBG{
     height: 40px;
-    background-color:   rgba(0, 0, 0, 0.889);
+    background-color:   rgba(255, 2, 107, 0);
     width: 65px;
     position: relative;
-    transform: translate(200px, 100px);
+    transform: translate(160px, 10px);
     /* display: none; */
     display: flex;
     justify-content: end;
@@ -183,7 +185,7 @@ nav .sherch div img{
     justify-content: space-around;
 }
 .Menu .btnBG div span{
-    background-color: white;
+    background-color: rgb(251, 0, 75);
     height: 100%;
     width: 4px;
     display: block;
@@ -204,26 +206,39 @@ nav .sherch div img{
     flex-direction: column;
     justify-content: space-around;
     overflow: visible;
+    overflow: scroll;
+}
+.container .Menu .categories::-webkit-scrollbar{
+    width: 7px;
+    height: 0px;
+}
+.container .Menu .categories::-webkit-scrollbar-thumb{
+    background-color: rgba(255, 0, 76, 0.523);
 }
 .Menu .categories .item{
-    height: 8%;
-    border: 1px solid rgba(0, 0, 0, 0.234);
-    background-color:   rgb(0, 0, 0);
+    /* height: 8%; */
+    min-height: 45px;
+    border-top: 1px solid rgba(255, 255, 255, 0.225);
+    /* background-color:   rgb(0, 37, 8); */
     transition: .3s;
     display: flex;
-    justify-content: CENTER;
+    justify-content: start;
     align-items: center;
+    gap: 10px;
     font-size: .8rem;
     font-weight: 800;
     color: white;
     /* border-radius: 5px; */
+    padding-left: 40px;
+    opacity: .7;
+}
+.Menu .categories .item img{
+    width: 25px;
 }
 .Menu .categories .item:hover{
-    transform: translateX(20px);
-    border-radius: 10px;
-    box-shadow: -10px 6px 15px 3px rgba(255, 255, 255, 0.088);
-    z-index: 20;
-    border: 1px solid white;
+    box-shadow: 0px 0px 15px 3px rgba(255, 255, 255, 0.158);
+    background-color: rgba(255, 255, 255, 0.063);
+    opacity: 1;
 }
 .Menu .categories .item:active{
     transform: scale(1.01);
@@ -250,6 +265,93 @@ nav .sherch div img{
     transform-origin: center;
     border-radius: 5px 5px 0 0;
     /* overflow: hidden; */
+}
+
+/* effet flou en pleine ecrant */
+.container .contenu .card .filter{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.562);
+    position: absolute;
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenu .card .filter .center{
+height: 580px;
+width: 75%;
+/* background-color: rgba(255, 0, 0, 0.349); */
+}
+.contenu .card .filter .center .imtext{
+    /* background-color: blue; */
+    height: 70%;
+    display: grid;
+    grid-template-columns: 1fr 2.7fr;
+}
+.contenu .card .filter .center .imtext .im{
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenu .card .filter .center .imtext .im div{
+    background-color: aquamarine;
+    height: 85%;
+    width: 220px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.contenu .card .filter .center .imtext .text{
+    /* background-color: blueviolet; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-bottom: 30px;
+    justify-content: end;
+    gap: 20px;
+    color: white;
+}
+.contenu .card .filter .center .imtext .text h2{
+    font-size: 2rem;
+    font-weight: 800;
+}
+.contenu .card .filter .center .imtext .text p{
+    font-family: sans-serif;
+    font-size: .9rem;
+    text-align: start;
+}
+.contenu .card .filter .center .autreinfo{
+    /* background-color: yellow; */
+    height: 30%;
+    display: flex;
+}
+.contenu .card .filter .center .autreinfo .canva{
+    /* background-color: black; */
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: start;
+}
+.contenu .card .filter .center .autreinfo .canva canvas{
+    height: 100%;
+    width: 200px;
+    /* background-color: red; */
+    margin-left: 30px;
+}
+.contenu .card .filter .center .autreinfo .date{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    color: white;
+    font-size: .9rem;
+    font-weight: 900;
+    /* background-color: red; */
+    gap: 10px;
+    padding-right: 10px;
 }
 .cardHover:hover{
     transform: rotate(-10deg);
@@ -310,6 +412,9 @@ nav .sherch div img{
     z-index: 100;
     position: fixed;
 }
+.invisible{
+    display: none!important;
+}
 
 .container .contenu .card .close{
     height: 30px;
@@ -327,6 +432,7 @@ nav .sherch div img{
     align-items: center;
     border-radius: 5px;
     transition: .2s;
+    z-index: 1;
 }
 .container .contenu .card .close:active{
     transform: scale(1.2);
@@ -376,21 +482,28 @@ footer .signature p{
         justify-content: center;
     }
     .container .Menu{
-        transform: translate(-95%);
-        background-color:   rgba(0, 0, 0, 0.889);
+        transform: translate(-100%);
+        background-color:   rgba(4, 0, 26, 0.658);
+        backdrop-filter: blur(5px);
         position:fixed;
         left: 0;
         z-index: 100;
         width: 200px;
-        padding-right:30px ;
+        /* padding-right:30px ; */
         transition: .5s;
+    }
+    /* .container .Menu .categories{
+    } */
+    .container .Menu .categories::-webkit-scrollbar{
+        width: 7px;
+        height: 0px;
     }
     .MenuVisible{
         transform: translate(0)!important;
     }
     .container .Menu .btnBG{
         display: flex;
-        opacity: .5;
+        /* opacity: .5; */
     }
     .recherche #titre{
         font-size: .8rem;
@@ -399,6 +512,10 @@ footer .signature p{
     }
     nav .sherch{
         display: none;
+    }
+    .recherche{
+        padding-right: 0;
+        align-items: center;
     }
     .recherche .inputrecherche{
         width: 80%;
@@ -418,6 +535,15 @@ footer .signature p{
     nav ul a{
         font-size: 1rem;
     }
+    .contenu .card .filter .center .imtext .text h2{
+        font-size: 1.3rem;
+        font-weight: 800;
+    }
+    .contenu .card .filter .center .imtext .text p{
+        font-family: sans-serif;
+        font-size: .7rem;
+        text-align: start;
+    }
 
 }
 
@@ -430,4 +556,41 @@ footer .signature p{
         min-width: 160px;
         height: 320px;
     }
+
+    .contenu .card .filter .center .imtext .text h2{
+        font-size: 1rem;
+        font-weight: 800;
+        text-align: center;
+    }
+    .contenu .card .filter .center .imtext .text p{
+        font-size: .65rem;
+        text-align: center;
+    }
+    .contenu .card .filter .center .imtext .im div{
+        /* height: 75%; */
+        width: 180px;
+    }
+    .contenu .card .filter .center .autreinfo .date{
+        font-size: .8rem;
+    }
+    .contenu .card .filter .center .autreinfo .canva{
+        height: 150px;
+        width: 150px!important;
+        /* background-color: red; */
+        margin-left: 30px;
+    }
+    .contenu .card .filter .center .autreinfo .canva canvas{
+        margin-left: 0;
+    }
 }
+
+/* .myRingChart{
+    height: 60px!important;
+    width: 60px!important;
+    background-color: rgb(251, 245, 245);
+    border-radius: 50%;
+} */
+
+/* .petiEcrantOnly{
+    display: none;
+} */
