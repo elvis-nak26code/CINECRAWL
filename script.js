@@ -22,14 +22,12 @@ function affichefilms(){
                     active = active === true ? false : true;
             })
         })
-    // console.log(cards)
 }affichefilms()
 
 // reduit la card quand elle est agrandi
 function close(){
     let close=document.querySelectorAll(".card .close")
     let cards=document.querySelectorAll(".card")
-    // console.log(close)
         close.forEach((element)=>{
                 element.addEventListener("click",()=>{
                     cards.forEach((element)=>{
@@ -60,7 +58,6 @@ function resize(){
             }
         })
     }
-    // console.log(cards)
 } resize()
 
 // gestion du boutton BG
@@ -73,18 +70,57 @@ function btnBG(){
 }btnBG()
 
 // les films disponible a l'acceuil
-
+// function filmsacceuil(){
+//     console.log("elvis")
+//     window.addEventListener("load",()=>{
+//         const apiKey = '9679335a71a266a04448afcc3f1810a5';
+//         const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR&page=1`;
+//         fetch(url)
+//                 .then(reponse=>{
+//                     if(!reponse.ok){
+//                         throw new Error("erreur")
+//                     }
+//                     return reponse.json()
+//                 })
+//                 .then(data=>{
+//                     console.log(data.results)
+//                     Domcreat(data.results)
+//                 })
+//                 .catch(err=>{
+//                     console.log(err)
+//                 })
+//     })
+// } filmsacceuil() 
 
 // fetching de donnee et generation du dome
 let categorieContent=document.querySelector(".Menu .categories")
+       //    fonction 1
 async function fetchData(){
-    const apiKey = '9679335a71a266a04448afcc3f1810a5';
-    const url1 = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-    try{
+try{
+        const apiKey = '9679335a71a266a04448afcc3f1810a5';
+        const url1 = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
         const resultat=await fetch(url1)
         const donnee=await resultat.json()
         const genres=donnee.genres
-        const icns=["icons8-action-96.png","icons8-boussole-50.png","icons8-animation-50 (1).png","icons8-comédie-50.png","icons8-piratage-informatique-50.png","icons8-documentaire-50.png","icons8-drame-50.png","icons8-famille-homme-femme-50.png","icons8-fantaisie-50.png","icons8-historique-des-commandes-50.png","icons8-pennywise-50.png","icons8-musique-50.png","icons8-troisième-oeil-symbole-50.png","icons8-rendez-vous-galant-homme-femme-50.png","icons8-robot-3-50.png","icons8-télévision-50.png","icons8-thriller-50.png","icons8-réfugié-de-guerre-50.png","icons8-occidental-50.png",]
+        const icns=["icons8-action-96.png",
+                    "icons8-boussole-50.png",
+                    "icons8-animation-50 (1).png",
+                    "icons8-comédie-50.png",
+                    "icons8-piratage-informatique-50.png",
+                    "icons8-documentaire-50.png",
+                    "icons8-drame-50.png",
+                    "icons8-famille-homme-femme-50.png",
+                    "icons8-fantaisie-50.png",
+                    "icons8-historique-des-commandes-50.png",
+                    "icons8-pennywise-50.png",
+                    "icons8-musique-50.png",
+                    "icons8-troisième-oeil-symbole-50.png",
+                    "icons8-rendez-vous-galant-homme-femme-50.png",
+                    "icons8-robot-3-50.png","icons8-télévision-50.png",
+                    "icons8-thriller-50.png",
+                    "icons8-réfugié-de-guerre-50.png",
+                    "icons8-occidental-50.png",
+                    ]
         for(let i=0;i<genres.length;i++){
             let dive=document.createElement("div")
                 dive.classList.add("item")
@@ -95,16 +131,15 @@ async function fetchData(){
             categorieContent.appendChild(dive)   
         }
           // affichage des films
-        let contenuContent=document.querySelector(".container .contenu")
         let texte=document.getElementById("titre") 
-        // console.log(contenuContent)
+           // fontion 2
         function affichage(){
             const btnsCategories=document.querySelectorAll(".categories .item")
             for(let i=0; i<btnsCategories.length;i++){
                 btnsCategories[i].addEventListener("click", async function(){
-                    // contenuContent.innerHTML="" 
                     texte.textContent=genres[i].name 
                     // fonction pour pouvoir afficher plusieur pages a la fois
+                            // foction 3
                     async function pages(){
                         const resultat=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=1`)
                         const donnee=await resultat.json()
@@ -119,6 +154,9 @@ async function fetchData(){
                         const resultat6=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=6`)
                         const donnee6=await resultat6.json()
                         const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results]
+                            // fonction 4
+                function Domcreat(Alldonnee){      
+                            let contenuContent=document.querySelector(".container .contenu")
                                 contenuContent.innerHTML=""
                             for(let i=0;i<Alldonnee.length; i++){
                                 let urlImage=Alldonnee[i].poster_path                                
@@ -170,7 +208,6 @@ async function fetchData(){
                             // gestion de laffichage en fonction de ta taille de notre card
                             let cards=document.querySelectorAll(".card")
                             let aCacher=document.querySelectorAll(".petiEcrantOnly")                 
-                            // console.log(cards)
                             for(let i=0;i<cards.length;i++){
                                 let urlImage=Alldonnee[i].backdrop_path
                                 let urlImage2=Alldonnee[i].poster_path  
@@ -178,9 +215,8 @@ async function fetchData(){
                                 cards[i].addEventListener("click",()=>{
                                     const largeur=cards[i].offsetWidth
                                     // ###################################################################################################################################
+                                     // quand la div prend tout l'ecrant
                                     if(largeur>250 && grandEcrantActiv){
-                                        // quand la div prend tout l'ecrant
-                                        console.log("nous somme sur grand ecrant")
                                         aCacher.forEach(element=>element.classList.add("invisible"))
                                         cards[i].style.backgroundImage=`url(https://image.tmdb.org/t/p/w500${urlImage})`
                                                     // l'effet flou
@@ -230,9 +266,7 @@ async function fetchData(){
                                                 center.appendChild(autreIfo)
                                                 text.classList.add("text")
                                                 cards[i].appendChild(filter)
-
                                                        // popularity
-
                                                 canvas.classList.add("myRingChart")
                                                 const ctx = canvas.getContext('2d');
                                                 const myRingChart = new Chart(ctx, {
@@ -274,18 +308,15 @@ async function fetchData(){
                                       // ###################################################################################################################################
                                         // quand la dive est petite 
                                         let elementAcacher=document.querySelectorAll(".grandEcrantOnly")
-                                        // let image=querySelector("")
                                     if(largeur<=250){
                                             grandEcrantActiv=true
-                                            console.log("nous somme sur patit ecrant")
-                                            console.log(Alldonnee)
                                             cards[i].style.backgroundImage=""
                                             aCacher.forEach(element=>element.classList.remove("invisible"))
                                             elementAcacher.forEach(element=>element.classList.add("invisible"))
-                                            console.log(elementAcacher)
                                     }
                                 })
                             }
+                        }Domcreat(Alldonnee) 
                     }pages()
                 })
             }
