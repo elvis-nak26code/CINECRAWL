@@ -1,0 +1,43 @@
+*{
+    margin: none;
+    padding: none;
+}
+body{
+    /* background-color: red; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: blue;
+    height: 350px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+.container div{
+    background-color: red;
+    height: 200px;
+    width: 120px;
+    background-image: url(close-up-tailor-helping-customer.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.container .card5{
+    background-color: green;
+    height: 260px;
+    width: 150px;
+    /* transform: rotateY(50deg); */
+}
+.container .card6{
+    transform: ro(140deg);
+}
+.container .card4{
+    transform: rotateY(-60deg);
+}
