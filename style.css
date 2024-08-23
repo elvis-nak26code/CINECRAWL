@@ -635,6 +635,8 @@ footer .signature p{
         text-align: start;
     }
 
+
+
     .container .contenu .card{
         min-height: 420px;
         min-width: 250px;
@@ -748,7 +750,7 @@ footer .signature p{
     }
     .container .contenu .card{
         min-width: 160px;
-        height: 280px!important;
+        height: 320px;
     }
 
     .contenu .card .filter .center .imtext .text h2{
