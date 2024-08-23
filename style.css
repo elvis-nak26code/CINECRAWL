@@ -635,9 +635,6 @@ footer .signature p{
         text-align: start;
     }
 
-
-
-
     .container .contenu .card{
         min-height: 420px;
         min-width: 250px;
@@ -689,6 +686,50 @@ footer .signature p{
         color: white;
         height: 200px;
     }
+
+    .contenu .card .filter .center .autreinfo .canva{
+        /* background-color: black; */
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    .contenu .card .filter .center .autreinfo .canva canvas{
+        height: 100px!important;
+        width: 100px!important;
+        /* background-color: red; */
+        margin-left: 30px;
+        margin-top: 15px;
+    }
+
+
+
+    .center .autreinfo .date .playcontainer{
+        height: 70px;
+        width: 70px;
+    }
+    .center .autreinfo .date .playcontainer div{
+        position: absolute;
+    }
+    .center .autreinfo .date .play3{
+        height: 60px;
+        width: 60px;
+    }
+    .center .autreinfo .date .play2{
+        height: 70px;
+        width: 70px;
+    }
+    .center .autreinfo .date .play1{
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+    }
+    .contenu .card .filter .center .autreinfo .date{
+        gap: 2px;
+    }
+    .contenu .card .filter .center .autreinfo .date p{
+        font-size: .6rem;
+    }
 }
 
 @media(max-width:580px){
@@ -707,7 +748,7 @@ footer .signature p{
     }
     .container .contenu .card{
         min-width: 160px;
-        height: 320px;
+        height: 280px!important;
     }
 
     .contenu .card .filter .center .imtext .text h2{
