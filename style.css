@@ -147,12 +147,18 @@ nav .sherch div img{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: .5s;
+    transition: .3s;
     font-size: .7rem;
     border-radius: 0 5px 5px 0;
 }
 .inputrecherche .btn:hover{
     background-color: rgb(255, 0, 72);
+    transform: scale(.9);
+    cursor: pointer;
+
+}
+.inputrecherche .btn:active{
+    transform: scale(1.2);
 }
 .inputrecherche .btn .image{
     display: none;
@@ -283,14 +289,24 @@ nav .sherch div img{
 .container .contenu .card .filter{
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.562);
+    background-color: rgba(2, 0, 28, 0.419);
     position: absolute;
     backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.container .contenu .card .filter .video{
+    height: 75%;
+    width: 90%;
+    position: absolute;
+    z-index: 4;
+    border-color:  rgba(255, 58, 117, 0.753);
+    border-width: 2px;
+}
+.closevideo{
+    display: none!important;
+}
 .contenu .card .filter .center{
 height: 580px;
 width: 75%;
@@ -365,6 +381,67 @@ width: 75%;
     /* background-color: red; */
     gap: 10px;
     padding-right: 10px;
+}
+.center .autreinfo .date .playcontainer{
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 110px;
+    width: 110px;
+}
+.center .autreinfo .date .playcontainer div{
+    position: absolute;
+}
+.center .autreinfo .date .play3{
+    background: radial-gradient(circle, #3498db00, #3498db);
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    /* position: absolute; */
+    animation: play 3s infinite ease-out;
+    z-index: 1;
+}
+.center .autreinfo .date .play2{
+    background: radial-gradient(circle,rgba(255, 255, 255, 0), rgb(251, 0, 75));
+    height: 100px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 2;
+    animation: play 3s infinite ease-out;
+    animation-delay: 1s;
+}
+.center .autreinfo .date .play1{
+    background-color: rgb(255, 255, 255);
+    height: 40px;
+    width: 40px;
+    clip-path: polygon(100% 49%, 0 0, 0 99%);
+    margin-left: 10px;
+    z-index: 3;
+    transition: .5s;
+}
+.center .autreinfo .date .play1:hover{
+    background-color: rgb(0, 0, 0);
+}
+.center .autreinfo .date .play1:active{
+    transform: scale(1.2);
+}
+@keyframes play{
+    0%,100%{
+        transform: scale(.2);
+        opacity: .1;
+    }
+    50%{
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 /* .cardHover:hover{
     transform: rotate(-10deg);
@@ -558,11 +635,59 @@ footer .signature p{
         text-align: start;
     }
 
-    .container .contenu .loading{
-        height: 54vh;
+
+
+
+    .container .contenu .card{
+        min-height: 420px;
+        min-width: 250px;
+        background-color: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        /* background-image: url(overhead-view-person-s-hand-cutting-brown-paper-with-scissor.jpg); */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        transition: .3s;
+        transform-origin: center;
+        border-radius: 5px 5px 0 0;
+        /* overflow: hidden; */
     }
-    .container .contenu .loading p{
-        font-size: 3rem;
+    
+    .contenu .card .filter .center{
+    min-height: 100vh;
+    /* background-color: rgba(255, 0, 0, 0.349); */
+    }
+    .contenu .card .filter .center .imtext{
+        /* background-color: blue; */
+        height: 70%;
+        display: flex;
+        flex-direction: column;
+    }
+    .contenu .card .filter .center .imtext .im{
+        /* background-color: rgb(26, 255, 0); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+    }
+    .contenu .card .filter .center .imtext .im div{
+        /* background-color: aquamarine; */
+        height: 85%;
+        width: 220px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .contenu .card .filter .center .imtext .text{
+        /* background-color: blueviolet; */
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-bottom: 30px;
+        justify-content: end;
+        gap: 20px;
+        color: white;
+        height: 200px;
     }
 }
 
