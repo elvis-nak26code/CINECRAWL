@@ -574,7 +574,7 @@ footer .signature p{
     }
     .container .Menu{
         transform: translate(-100%);
-        background-color:   rgba(4, 0, 26, 0.658);
+        background-color:   rgba(15, 11, 38, 0.793);
         backdrop-filter: blur(5px);
         position:fixed;
         left: 0;
@@ -650,7 +650,7 @@ footer .signature p{
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        transition: .3s;
+        transition: .1s;
         transform-origin: center;
         border-radius: 5px 5px 0 0;
         /* overflow: hidden; */
