@@ -21,7 +21,7 @@ footer{
     height: 100%;
     width: 100%;
     background-color: rgba(4, 0, 52, 0.589);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
     position: absolute;
     display: flex;
     flex-direction: column;
