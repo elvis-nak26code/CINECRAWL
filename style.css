@@ -650,7 +650,7 @@ footer .signature p{
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        transition: height .01s;
+        transition: height 0;
         transform-origin: center;
         border-radius: 5px 5px 0 0;
         /* overflow: hidden; */
