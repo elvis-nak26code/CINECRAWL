@@ -12,7 +12,7 @@ footer{
     /* background-color: red; */
     background-image: url(view-3d-cinema-film-reel.jpg);
     background-position: center;
-    background-size:150%;
+    background-size:cover;
     background-repeat: no-repeat;
     position: relative;
 }
@@ -76,7 +76,6 @@ footer{
 }
 .play{
     /* background-color: blue; */
-    transform: translateY(50px);
     display: flex;
     justify-content: center;
     align-items: center;
