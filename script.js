@@ -10,10 +10,18 @@ function constructor(elementAcree,classs,emplacement,content=null){
 function apparutionBtnRecherche(){
     let btnRecherche=document.querySelector("nav .sherch div")
     let input=document.querySelector(".recherche .inputrecherche")
+    let inputcontainer=document.querySelector(" .recherche .inputrecherche")
     let texte=document.getElementById("titre")    
         btnRecherche.addEventListener("click",()=>{
             input.classList.toggle("inputActiv")
             texte.classList.toggle("titreActive")
+        })
+        window.addEventListener("scroll",()=>{
+            let rect = inputcontainer.getBoundingClientRect();
+            console.log(rect.top)
+            if(rect.top<=10){
+                inputcontainer.classList.add("large")
+            }else inputcontainer.classList.remove("large")
         })
 }apparutionBtnRecherche()
 

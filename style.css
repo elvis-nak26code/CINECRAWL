@@ -163,6 +163,7 @@ nav .sherch div img{
 .inputrecherche .btn .image{
     display: none;
 }
+
 /* le corp de la page */
 .container{
     width:100%;
@@ -235,7 +236,7 @@ nav .sherch div img{
 .Menu .categories .item{
     /* height: 8%; */
     min-height: 45px;
-    border-top: 1px solid rgba(255, 255, 255, 0.868);
+    border-top: 1px solid rgba(255, 255, 255, 0.319);
     /* background-color:   rgb(0, 37, 8); */
     transition: .3s;
     display: flex;
@@ -271,8 +272,8 @@ nav .sherch div img{
     /* position: relative; */
 }
 .container .contenu .card{
-    height: 420px;
-    min-width: 250px;
+    height: 350px;
+    min-width: 220px;
     background-color: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
     /* background-image: url(overhead-view-person-s-hand-cutting-brown-paper-with-scissor.jpg); */
@@ -608,8 +609,11 @@ footer .signature p{
         align-items: center;
     }
     .recherche .inputrecherche{
-        width: 80%;
+        width: 85%;
         opacity: 1;
+    }
+    .large{
+        min-width: 97%!important;
     }
     .inputrecherche .btn p{
         display: none;
@@ -638,8 +642,8 @@ footer .signature p{
 
 
     .container .contenu .card{
-        min-height: 420px;
-        min-width: 250px;
+        min-height: 350px;
+        min-width: 220px;
         background-color: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(10px);
         /* background-image: url(overhead-view-person-s-hand-cutting-brown-paper-with-scissor.jpg); */
@@ -793,15 +797,3 @@ footer .signature p{
         font-size: .7rem;
     }
 }
-
-/* .myRingChart{
-    height: 60px!important;
-    width: 60px!important;
-    background-color: rgb(251, 245, 245);
-    border-radius: 50%;
-} */
-
-/* .petiEcrantOnly{
-    display: none;
-} */
-.im{}
