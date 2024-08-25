@@ -1,0 +1,96 @@
+body{
+    height: 100vh;
+}
+nav{
+    height: 8%;
+}
+footer{
+    height: 22%;
+}
+.container{
+    height: 92%!important;
+    /* background-color: red; */
+    background-image: url(view-3d-cinema-film-reel.jpg);
+    background-position: center;
+    background-size:150%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.container .blur{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(4, 0, 52, 0.589);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container .blur p{
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-weight: 800;
+}
+.container .blur span{
+    color: rgb(255, 43, 103);
+}
+.container .blur .btn{
+    height: 150px;
+    width: 150px;
+    background: radial-gradient(circle,rgba(255, 255, 255, 0), rgb(255, 43, 103));
+    border-radius: 50%;
+    /* margin-top: 50px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation:  scale 3s infinite ease;
+}
+@keyframes scale{
+    0%{transform: scale(.2);}
+    50%{transform: scale(1.8);
+        opacity: 0;}
+    100%{transform: scale(.2);}
+}
+.container .blur a{
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .7rem;
+    text-decoration: none;
+    clip-path: polygon(100% 49%, 0 0, 0 100%);
+    padding: 2px;
+    margin-left:14px ;
+    position: absolute;
+    transition: .5s;
+}
+.container .blur a:hover{
+    transform: scale(1.2);
+}
+.play{
+    /* background-color: blue; */
+    transform: translateY(50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: visible;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+@media(max-width:1000px){
+    .container .blur p{
+        font-size: clamp(.7rem, 2vw + 1rem, 1.7rem);
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}

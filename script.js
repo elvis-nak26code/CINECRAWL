@@ -1,11 +1,4 @@
-// fonction qui cree les elements du Dom
-function constructor(elementAcree,classs,emplacement,content=null){
-    let element=document.createElement(elementAcree)
-        element.classList.add(classs)
-        element.textContent=content
-        emplacement.appendChild(element)
-}
-// constructor("div","item",categorieContent,genres[i].name)
+
 // apparution de l'input
 function apparutionBtnRecherche(){
     let btnRecherche=document.querySelector("nav .sherch div")
@@ -374,7 +367,6 @@ try{
         for(let i=0;i<genres.length;i++){
             let dive= constructor("div","item",genres[i].name)
             let icons= constructor("img")
-
                 icons.src=`icon/${icns[i]}` 
                 dive.appendChild(icons)  
                 categorieContent.appendChild(dive)   
@@ -400,8 +392,6 @@ try{
                         // const resultat7=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=7`)
                         // const donnee7=await resultat7.json()
                         // const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results,...donnee7.results]
-
-
                         const pages = [1, 2, 3, 4, 5, 6, 7];
                         const promises = pages.map((page) => {
                             return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=${page}`)
@@ -420,31 +410,43 @@ try{
     }
 }fetchData()
 
+async function chercheurFilm(){
+    const input=document.getElementById("barRecherche")
+    try{
+        let nomDuFilm=input.value
+        let resultat=fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=fr&query=${encodeURIComponent(nomDuFilm)}&page=1`)
+        let resultat2=fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=fr&query=${encodeURIComponent(nomDuFilm)}&page=2`)
+        let reonse= await (await resultat).json()
+        let reonse2= await (await resultat2).json()
+        let reponseFinal=[...reonse.results,...reonse2.results]
+        if(reponseFinal.length==0){
+            throw new error()
+        }
+        console.log(reonse.results)
+        Domcreator(reponseFinal) 
+    } 
+    catch(e){
+        console.log(e.message)
+        alert(" aucun resultats trouver")
+        input.value=""
+    }      
+    let texte=document.getElementById("titre")
+        texte.textContent=input.value
+
+}
+
 // recherche par nom et par mot clee
 function recherche(){
-    const input=document.getElementById("barRecherche")
     const btnSubmit=document.getElementById("submit")
-    btnSubmit.addEventListener("click",async ()=>{
-        try{
-            let nomDuFilm=input.value
-            let resultat=fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=fr&query=${encodeURIComponent(nomDuFilm)}&page=1`)
-            let resultat2=fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=fr&query=${encodeURIComponent(nomDuFilm)}&page=2`)
-            let reonse= await (await resultat).json()
-            let reonse2= await (await resultat2).json()
-            let reponseFinal=[...reonse.results,...reonse2.results]
-            if(reponseFinal.length==0){
-                throw new error()
-            }
-            console.log(reonse.results)
-            Domcreator(reponseFinal) 
-        } 
-        catch(e){
-            console.log(e.message)
-            alert(" aucun resultats trouver")
-            input.value=""
-        }      
-        let texte=document.getElementById("titre")
-            texte.textContent=input.value
+    btnSubmit.addEventListener("click",()=>{
+        chercheurFilm()
     })
-
 }recherche()
+
+// lencement de recherche grace a une touche du clavier
+document.addEventListener("keydown",(event)=>{
+    console.log(event.key)
+    if(event.key=="Enter"){
+        chercheurFilm()
+    }
+})
