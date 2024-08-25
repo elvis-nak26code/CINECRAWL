@@ -1,3 +1,11 @@
+// fonction qui cree les elements du Dom
+function constructor(elementAcree,classs,emplacement,content=null){
+    let element=document.createElement(elementAcree)
+        element.classList.add(classs)
+        element.textContent=content
+        emplacement.appendChild(element)
+}
+// constructor("div","item",categorieContent,genres[i].name)
 // apparution de l'input
 function apparutionBtnRecherche(){
     let btnRecherche=document.querySelector("nav .sherch div")
@@ -347,14 +355,21 @@ try{
                     "icons8-réfugié-de-guerre-50.png",
                     "icons8-occidental-50.png",
                     ]
+                    // fonction qui cree les elements du Dom
+                    function constructor(elementAcree,classs=null,content=null){
+                        let element=document.createElement(elementAcree)
+                            element.classList.add(classs)
+                            element.textContent=content
+                            return element
+                    }
+                    // constructor("div","item",genres[i].name,categorieContent)
         for(let i=0;i<genres.length;i++){
-            let dive=document.createElement("div")
-                dive.classList.add("item")
-                dive.textContent=genres[i].name
-            let icons=document.createElement("img") 
+            let dive= constructor("div","item",genres[i].name)
+            let icons= constructor("img")
+
                 icons.src=`icon/${icns[i]}` 
                 dive.appendChild(icons)  
-            categorieContent.appendChild(dive)   
+                categorieContent.appendChild(dive)   
         }
           // affichage des films
         let texte=document.getElementById("titre") 
@@ -362,21 +377,30 @@ try{
             for(let i=0; i<btnsCategories.length;i++){
                 btnsCategories[i].addEventListener("click", async function(){
                     texte.textContent=genres[i].name 
-                        const resultat=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=1`)
-                        const donnee=await resultat.json()
-                        const resultat2=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=2`)
-                        const donnee2=await resultat2.json()
-                        const resultat3=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=3`)
-                        const donnee3=await resultat3.json()
-                        const resultat4=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=4`)
-                        const donnee4=await resultat4.json()
-                        const resultat5=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=5`)
-                        const donnee5=await resultat5.json()
-                        const resultat6=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=6`)
-                        const donnee6=await resultat6.json()
-                        const resultat7=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=7`)
-                        const donnee7=await resultat7.json()
-                        const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results,...donnee7.results]
+                        // const resultat=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=1`)
+                        // const donnee=await resultat.json()
+                        // const resultat2=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=2`)
+                        // const donnee2=await resultat2.json()
+                        // const resultat3=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=3`)
+                        // const donnee3=await resultat3.json()
+                        // const resultat4=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=4`)
+                        // const donnee4=await resultat4.json()
+                        // const resultat5=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=5`)
+                        // const donnee5=await resultat5.json()
+                        // const resultat6=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=6`)
+                        // const donnee6=await resultat6.json()
+                        // const resultat7=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=7`)
+                        // const donnee7=await resultat7.json()
+                        // const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results,...donnee7.results]
+
+
+                        const pages = [1, 2, 3, 4, 5, 6, 7];
+                        const promises = pages.map((page) => {
+                            return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=${page}`)
+                                .then(resultat => resultat.json());
+                        });
+                        const results = await Promise.all(promises);
+                        const Alldonnee = results.flatMap(donnee => donnee.results);
                             // fonction qui cree le dom
                         Domcreator(Alldonnee) 
                 })

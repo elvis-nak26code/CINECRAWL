@@ -279,7 +279,6 @@ nav .sherch div img{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    transition: .3s;
     transform-origin: center;
     border-radius: 5px 5px 0 0;
     /* overflow: hidden; */
@@ -297,11 +296,11 @@ nav .sherch div img{
     align-items: center;
 }
 .container .contenu .card .filter .video{
-    height: 75%;
-    width: 90%;
+    height: 80%;
+    width: 70%;
     position: absolute;
     z-index: 4;
-    border-color:  rgba(255, 58, 117, 0.753);
+    border: none ;
     border-width: 2px;
 }
 .closevideo{
@@ -501,6 +500,7 @@ width: 75%;
     transform: scale(1);
     z-index: 100;
     position: fixed;
+    border-radius: 0!important;
 }
 .invisible{
     display: none!important;
@@ -676,6 +676,8 @@ footer .signature p{
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+        border-radius: 5px;
+        box-shadow: 0 10px 40px 2px rgba(255, 255, 255, 0.608);
     }
     .contenu .card .filter .center .imtext .text{
         /* background-color: blueviolet; */
@@ -732,6 +734,10 @@ footer .signature p{
     .contenu .card .filter .center .autreinfo .date p{
         font-size: .6rem;
     }
+    .container .contenu .card .filter .video{
+        height: 60%;
+        width: 90%;
+    }
 }
 
 @media(max-width:580px){
@@ -750,7 +756,7 @@ footer .signature p{
     }
     .container .contenu .card{
         min-width: 160px;
-        height: 280px;
+        min-height: 280px;
     }
 
     .contenu .card .filter .center .imtext .text h2{
@@ -798,3 +804,4 @@ footer .signature p{
 /* .petiEcrantOnly{
     display: none;
 } */
+.im{}
