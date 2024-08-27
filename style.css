@@ -284,6 +284,7 @@ nav .sherch div img{
     display: flex;
     justify-content: center;
     align-items: center;
+    /* overflow: scroll; */
 }
 .container .contenu .card .filter .video{
     height: 80%;
@@ -299,6 +300,7 @@ nav .sherch div img{
 .contenu .card .filter .center{
 height: 580px;
 width: 75%;
+/* background-color: red; */
 }
 .contenu .card .filter .center .imtext{
     height: 70%;
@@ -614,12 +616,20 @@ footer .signature p{
         transform-origin: center;
         border-radius: 5px 5px 0 0;
     }
-    
+
+    /* .contenu .card .filter{
+        overflow: scroll;
+    } */
     .contenu .card .filter .center{
-    min-height: 100vh;
+    height: 300px!important;
+    height: 600px!important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
     }
     .contenu .card .filter .center .imtext{
-        height: 70%;
+        min-height: 70%;
         display: flex;
         flex-direction: column;
     }
@@ -630,7 +640,7 @@ footer .signature p{
         height: 500px;
     }
     .contenu .card .filter .center .imtext .im div{
-        height: 85%;
+        min-height: 300px;
         width: 220px;
         background-position: center;
         background-repeat: no-repeat;
@@ -645,8 +655,29 @@ footer .signature p{
         padding-bottom: 30px;
         justify-content: end;
         gap: 20px;
-        color: white;
+        color: rgb(255, 253, 253);
         height: 200px;
+        /* background-color: rgb(30, 255, 0); */
+        overflow-y: scroll;
+        padding-bottom: 0;
+    }
+    .contenu .card .filter .center .imtext .text::-webkit-scrollbar{
+        display: none;
+    }
+    .contenu .card .filter .center .imtext .text p{
+        overflow-y: scroll;
+    }
+
+    .contenu .card .filter .center .imtext .text p::-webkit-scrollbar{
+        width: 5px;
+        background-color: rgb(255, 0, 123);
+    }
+    .contenu .card .filter .center .imtext .text p::-webkit-scrollbar-thumb{
+        background-color: rgb(252, 252, 252);
+    }
+
+    .contenu .card .filter .center .autreinfo{
+        height: 120px!important;
     }
 
     .contenu .card .filter .center .autreinfo .canva{
@@ -680,8 +711,8 @@ footer .signature p{
         width: 70px;
     }
     .center .autreinfo .date .play1{
-        height: 20px;
-        width: 20px;
+        height: 40px;
+        width: 40px;
         margin-right: 5px;
     }
     .contenu .card .filter .center .autreinfo .date{
@@ -726,6 +757,7 @@ footer .signature p{
     }
     .contenu .card .filter .center .imtext .im div{
         width: 180px;
+        min-height: 240px!important;
     }
     .contenu .card .filter .center .autreinfo .date{
         font-size: .8rem;
