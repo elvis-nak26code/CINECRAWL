@@ -8,20 +8,23 @@ footer{
     height: 22%;
 }
 .container{
-    height: 92%!important;
+    height: 82%!important;
     /* background-color: red; */
-    background-image: url(view-3d-cinema-film-reel.jpg);
+    background-image: url(https://img.freepik.com/premium-photo/series-movies-including-one-that-says-only-one-that-is_1057389-77176.jpg?w=740);
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
     position: relative;
 }
+footer{
+    height: 10%!important;
+}
 
 .container .blur{
     height: 100%;
     width: 100%;
-    background-color: rgba(4, 0, 52, 0.589);
-    backdrop-filter: blur(2px);
+    background-color: rgba(4, 0, 52, 0.599);
+    backdrop-filter: blur(3px);
     position: absolute;
     display: flex;
     flex-direction: column;
