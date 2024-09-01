@@ -82,7 +82,7 @@ function filmsDacceuil(){
     console.log("elvis")
     window.addEventListener("load",async ()=>{
         const apiKey = '9679335a71a266a04448afcc3f1810a5';
-        const pages = [1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+        const pages = [1, 2, 3, 4, 5, 6];
                         const promises = pages.map((page) => {
                             const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR&page=${page}`;
                             return fetch(url)
