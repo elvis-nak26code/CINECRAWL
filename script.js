@@ -388,7 +388,7 @@ try{
                         // const resultat7=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=7`)
                         // const donnee7=await resultat7.json()
                         // const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results,...donnee7.results]
-                        const pages = [1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+                        const pages = [1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15];
                         const promises = pages.map((page) => {
                             return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=${page}`)
                                 .then(resultat => resultat.json());
