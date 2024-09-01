@@ -80,23 +80,19 @@ function btnBG(){
 // les films disponible a l'acceuil
 function filmsDacceuil(){
     console.log("elvis")
-    window.addEventListener("load",()=>{
+    window.addEventListener("load",async ()=>{
         const apiKey = '9679335a71a266a04448afcc3f1810a5';
-        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR&page=10`;
-        fetch(url)
-                .then(reponse=>{
-                    if(!reponse.ok){
-                        throw new Error("erreur")
-                    }
-                    return reponse.json()
-                })
-                .then(data=>{
-                    Domcreator(data.results)
-                })
-                .catch(err=>{
-                    console.log(err)
-                })
-    })
+        const pages = [1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
+                        const promises = pages.map((page) => {
+                            const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=fr-FR&page=${page}`;
+                            return fetch(url)
+                                .then(resultat => resultat.json());
+                        });
+                        const results = await Promise.all(promises);
+                        const Alldonnee = results.flatMap(donnee => donnee.results);
+                            // fonction qui cree le dom
+                        Domcreator(Alldonnee) 
+                    })
 } filmsDacceuil() 
 
 
@@ -276,7 +272,7 @@ function Domcreator(donnee){
                                 element.addEventListener("click",()=>{
                                     let id=donnee[i].id
                                     // alert(id)
-                                    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`;
+                                    const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=fr`;
                                     fetch(url)
                                         .then(reponse=>reponse.json())
                                         .then(data=>{
@@ -392,7 +388,7 @@ try{
                         // const resultat7=await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=7`)
                         // const donnee7=await resultat7.json()
                         // const Alldonnee=[...donnee.results, ...donnee2.results, ...donnee3.results, ...donnee4.results, ...donnee5.results, ...donnee6.results,...donnee7.results]
-                        const pages = [1, 2, 3, 4, 5, 6, 7];
+                        const pages = [1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
                         const promises = pages.map((page) => {
                             return fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=fr&with_genres=${genres[i].id}&page=${page}`)
                                 .then(resultat => resultat.json());
